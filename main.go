@@ -69,6 +69,8 @@ func updateBook(w http.ResponseWriter, req *http.Request) {
 			return
 		}
 	}
+	w.WriteHeader(404)
+	json.NewEncoder(w).Encode(map[string]string{"detail": "No post found with specified id"})
 }
 
 func deleteBook(w http.ResponseWriter, req *http.Request) {
